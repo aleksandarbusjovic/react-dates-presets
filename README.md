@@ -10,7 +10,7 @@ Live demo: [streamfoundations.github.io/react-dates-presets/demo](http://streamf
 
 ## Usage
 
-```
+```javascript
 render() {
   const ranges = [
     { id: 'today', range: { startDate: moment(), endDate: moment() }, label: 'Today' },
@@ -24,7 +24,7 @@ render() {
       value={this.props.value}
       onChange={this.onChange}
       ranges={ranges}
-      isOutsideRange={(date) => date >= moment().add(1, 'days') /* allow past dates */}
+      isOutsideRange={(date) => false /* allow future & past dates */}
     />
   );
 }
