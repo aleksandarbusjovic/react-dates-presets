@@ -83,7 +83,7 @@ class DatePresetPicker extends PureComponent {
 
     return (
       <div className={styles.wrapper}>
-        <button id="pickerWrapper" onClick={this.onPickerClick} className={classnames(styles.pickerWrapper, className)}>
+        <div id="pickerWrapper" onClick={this.onPickerClick} className={classnames(styles.pickerWrapper, className)}>
           <DateRangePicker
             {...props}
             startDate={moment(stateValue.startDate)}
@@ -93,7 +93,7 @@ class DatePresetPicker extends PureComponent {
             onFocusChange={this.onCalendarFocusChange}
             initialVisibleMonth={() => moment(stateValue.startDate)}
           />
-        </button>
+        </div>
         <OutsideClickHandler onOutsideClick={this.onOutsideClick}>
           {
             this.state.pickerVisible && this.state.presetPickerActive &&
