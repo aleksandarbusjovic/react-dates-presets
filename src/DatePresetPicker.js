@@ -94,9 +94,9 @@ class DatePresetPicker extends PureComponent {
             initialVisibleMonth={() => moment(stateValue.startDate)}
           />
         </div>
-        <OutsideClickHandler onOutsideClick={this.onOutsideClick}>
-          {
-            this.state.pickerVisible && this.state.presetPickerActive &&
+        {
+          this.state.pickerVisible && this.state.presetPickerActive &&
+            <OutsideClickHandler onOutsideClick={this.onOutsideClick}>
               <div className="DateRangePicker__picker DateRangePicker__picker--horizontal DateRangePicker--with-caret">
                 <div className="DayPicker DayPicker--horizontal">
                   <div className={styles.rangePickerIn}>
@@ -107,8 +107,8 @@ class DatePresetPicker extends PureComponent {
                   </div>
                 </div>
               </div>
-          }
-        </OutsideClickHandler>
+            </OutsideClickHandler>
+        }
       </div>
     );
   }
