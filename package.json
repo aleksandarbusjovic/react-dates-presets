@@ -1,6 +1,6 @@
 {
   "name": "react-dates-presets",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "Preset picker based on `react-dates` - allows you to define preset ranges like `today`, `last week`, etc.",
   "main": "lib/index.js",
   "author": "Damian Duda <damian@watchingthat.com>",
