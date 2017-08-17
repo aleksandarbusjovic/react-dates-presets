@@ -17,12 +17,17 @@ class DatePresetPicker extends PureComponent {
       label: PropTypes.string.isRequired,
     })).isRequired,
     onChange: PropTypes.func,
+    customRangeLabel: PropTypes.oneOf([
+      PropTypes.object,
+      PropTypes.string,
+    ]),
   };
 
   static defaultProps = {
     className: undefined,
     value: undefined,
     onChange: undefined,
+    customRangeLabel: 'Custom range',
   };
 
   state = { value: { startDate: undefined, endDate: undefined }, focusedInput: false };
@@ -78,7 +83,7 @@ class DatePresetPicker extends PureComponent {
   value = () => this.state.value;
 
   render() {
-    const { value, onChange, ranges, className, ...props } = this.props;
+    const { value, onChange, ranges, className, customRangeLabel, ...props } = this.props;
     const stateValue = this.state.value;
 
     return (
@@ -103,7 +108,7 @@ class DatePresetPicker extends PureComponent {
                     {ranges.map((range) =>
                       <RangeButton key={this.rangeId(range)} id={this.rangeId(range)} activeRange={stateValue} range={range.range} clickFunction={this.onPresetRangeSet}>{range.label}</RangeButton>
                     )}
-                    <RangeButton id="custom_range" params="startDate" clickFunction={this.onCalendarFocusChange}>Custom range</RangeButton>
+                    <RangeButton id="custom_range" params="startDate" clickFunction={this.onCalendarFocusChange}>{customRangeLabel}</RangeButton>
                   </div>
                 </div>
               </div>
