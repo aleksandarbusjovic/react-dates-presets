@@ -17,7 +17,7 @@ class DatePresetPicker extends PureComponent {
       label: PropTypes.string.isRequired,
     })).isRequired,
     onChange: PropTypes.func,
-    customRangeLabel: PropTypes.oneOf([
+    customRangeLabel: PropTypes.oneOfType([
       PropTypes.object,
       PropTypes.string,
     ]),

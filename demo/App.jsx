@@ -26,6 +26,7 @@ class App extends React.Component {
         onChange={this.onChange}
         ranges={ranges}
         isOutsideRange={() => false /* allow future & past dates */}
+        /* customRangeLabel="other range..." */
       />
     );
   }
