@@ -17,6 +17,8 @@ class DatePresetPicker extends PureComponent {
       label: PropTypes.string.isRequired,
     })).isRequired,
     onChange: PropTypes.func,
+    onClose: PropTypes.func,
+    onFocus: PropTypes.func,
     customRangeLabel: PropTypes.oneOfType([
       PropTypes.object,
       PropTypes.string,
@@ -27,6 +29,8 @@ class DatePresetPicker extends PureComponent {
     className: undefined,
     value: undefined,
     onChange: undefined,
+    onFocus: undefined,
+    onClose: undefined,
     customRangeLabel: 'Custom range',
   };
 
@@ -51,12 +55,16 @@ class DatePresetPicker extends PureComponent {
 
   onCalendarFocusChange = (focusedCalendar) => {
     if (this.state.pickerVisible) {
-      this.setState({ focusedCalendar, presetPickerActive: !focusedCalendar, pickerVisible: !!focusedCalendar });
+      const newFocus = { focusedCalendar, presetPickerActive: !focusedCalendar, pickerVisible: !!focusedCalendar };
+      this.setState(newFocus);
     }
   };
 
   onPresetRangeSet = (values) => {
     this.setState({ value: values, pickerVisible: false, presetPickerActive: false });
+    if (this.props.onClose) {
+      this.props.onClose();
+    }
     this.props.onChange(values);
   };
 
@@ -73,6 +81,9 @@ class DatePresetPicker extends PureComponent {
   };
 
   focus = () => {
+    if (this.props.onFocus) {
+      this.props.onFocus();
+    }
     if (!this.state.pickerVisible) {
       this.setState({ pickerVisible: true, presetPickerActive: true });
     }
@@ -83,7 +94,7 @@ class DatePresetPicker extends PureComponent {
   value = () => this.state.value;
 
   render() {
-    const { value, onChange, ranges, className, customRangeLabel, ...props } = this.props;
+    const { value, onChange, onFocus, ranges, className, customRangeLabel, ...props } = this.props;
     const stateValue = this.state.value;
 
     return (
